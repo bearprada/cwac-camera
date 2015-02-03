@@ -193,8 +193,7 @@ public class ImageCleanupTask extends Thread {
   }
 
   private Matrix rotate(Matrix input, int degree) {
-    input.setRotate(degree);
-
+    input.preRotate(degree);
     return(input);
   }
 
