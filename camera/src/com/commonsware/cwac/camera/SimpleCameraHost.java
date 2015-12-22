@@ -182,11 +182,11 @@ public class SimpleCameraHost implements CameraHost {
 
         // Try to find an size match aspect ratio and size
         for (Camera.Size size : sizes) {
-            double ratio = (double) size.width / size.height;
+            double ratio = (double) size.height / size.width;
             if (Math.abs(ratio - targetRatio) > ASPECT_TOLERANCE) continue;
-            if (Math.abs(size.height - targetHeight) < minDiff) {
+            if (Math.abs(size.width - targetHeight) < minDiff) {
                 optimalSize = size;
-                minDiff = Math.abs(size.height - targetHeight);
+                minDiff = Math.abs(size.width - targetHeight);
             }
         }
 
