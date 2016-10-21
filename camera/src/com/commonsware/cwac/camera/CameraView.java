@@ -247,7 +247,9 @@ public class CameraView extends ViewGroup implements AutoFocusCallback {
 //      boolean useFullBleed=getHost().useFullBleedPreview();
 //      if ((useFirstStrategy && !useFullBleed)
 //          || (!useFirstStrategy && useFullBleed)) {
-      if (!useFirstStrategy) {
+      // we add a condition for check previewHeight because this issue
+      // https://fabric.io/cardinalblue/android/apps/com.cardinalblue.android.cami/issues/55f23ee3f5d3a7f76befbcd3
+      if (!useFirstStrategy && previewHeight != 0) {
         final int scaledChildWidth=
             previewWidth * height / previewHeight;
         child.layout((width - scaledChildWidth) / 2, 0,
