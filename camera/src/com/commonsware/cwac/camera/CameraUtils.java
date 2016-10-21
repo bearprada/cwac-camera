@@ -28,6 +28,20 @@ public class CameraUtils {
 
   private static final double ASPECT_TOLERANCE=0.1;
 
+    public static Camera.Size getBestPreviewSize(int width, int height, Camera.Parameters parameters) {
+        List<Camera.Size> sizes=parameters.getSupportedPreviewSizes();
+        // Try to find an size match aspect ratio and size
+        int minDiffWidth = Integer.MAX_VALUE;
+        Size result = sizes.get(0);
+        for (Size size : sizes) {
+            int diff = Math.abs(size.height - width);
+            if (minDiffWidth > diff) {
+                minDiffWidth = diff;
+                result = size;
+            }
+        }
+        return result;
+    }
   public static Camera.Size getOptimalPreviewSize(int displayOrientation,
                                                   int width,
                                                   int height,
